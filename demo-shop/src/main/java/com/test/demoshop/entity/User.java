@@ -1,5 +1,6 @@
 package com.test.demoshop.entity;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -14,11 +15,15 @@ import java.sql.Date;
 @Data
 @Entity
 @Table(name = "user")
+@Schema(description= "学生信息")
 public class User  {
     @Id
+    @Schema(description = "主键ID", required = true, example = "1")
     @Column @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    @Schema(description = "用户名称", required = true, example = "李楠")
     private String username;
+    @Schema(description = "用户密码", required = true, example = "李楠")
     private String password;
     @Column(unique = true)
     private Date birthday;
