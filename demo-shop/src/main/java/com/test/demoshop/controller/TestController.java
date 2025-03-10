@@ -3,6 +3,8 @@ package com.test.demoshop.controller;
 import com.test.demoshop.entity.User;
 import com.test.demoshop.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.Date;
@@ -32,6 +34,7 @@ public class TestController {
         return "Save";
     }
     @GetMapping("get")
+    @Cacheable(value = "user",key = "123")
     public Iterable<User> get(){
         return userRepository.findAll();
     }
