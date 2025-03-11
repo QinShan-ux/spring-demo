@@ -4,7 +4,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import lombok.Data;
 import org.springframework.cache.annotation.Cacheable;
-
+import java.io.Serializable;
 import java.sql.Date;
 
 
@@ -17,7 +17,8 @@ import java.sql.Date;
 @Entity
 @Table(name = "user")
 @Schema(description= "学生信息")
-public class User  {
+
+public class User  implements Serializable{
     @Id
     @Schema(description = "主键ID", required = true, example = "1")
     @Column @GeneratedValue(strategy = GenerationType.IDENTITY)
